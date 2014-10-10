@@ -63,6 +63,7 @@ public class RobotFrame extends JFrame {
                         int newPort = Integer.parseInt(portField.getText());
                         controller.setPort(newPort);
                         controller.handshake();
+                        JOptionPane.showMessageDialog(null, "Connection Created!", "Success!", JOptionPane.INFORMATION_MESSAGE);
                 } catch (NumberFormatException a){
                         a.printStackTrace();
                 }
