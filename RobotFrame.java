@@ -72,6 +72,8 @@ public class RobotFrame extends JFrame {
                         boolean test = controller.handshake();
                         if (test)
                             JOptionPane.showMessageDialog(null, "Connection Created!", "Success!", JOptionPane.INFORMATION_MESSAGE);
+                        else
+                            JOptionPane.showMessageDialog(null, "Connection Failed!", "Failure!", JOptionPane.INFORMATION_MESSAGE);
                 } catch (NumberFormatException a){
                         a.printStackTrace();
                 }
