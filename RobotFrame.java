@@ -25,6 +25,8 @@ public class RobotFrame extends JFrame {
     private JButton land;
     private JButton up;
     private JButton down;
+    private JLabel speed;
+    private JSlider speedControl;
     
     private JButton reload;
     private JTextField urlField;
@@ -63,8 +65,9 @@ public class RobotFrame extends JFrame {
                 try {
                         int newPort = Integer.parseInt(portField.getText());
                         controller.setPort(newPort);
-                        controller.handshake();
-                        JOptionPane.showMessageDialog(null, "Connection Created!", "Success!", JOptionPane.INFORMATION_MESSAGE);
+                        boolean test = controller.handshake();
+                        if (test)
+                            JOptionPane.showMessageDialog(null, "Connection Created!", "Success!", JOptionPane.INFORMATION_MESSAGE);
                 } catch (NumberFormatException a){
                         a.printStackTrace();
                 }
@@ -145,6 +148,31 @@ public class RobotFrame extends JFrame {
         
         });
         this.add(portField);
+        
+        //Speed Label
+        speed = new JLabel("Speed");
+        speed.setSize(40, 20);
+        speed.setLocation(15, 480);
+        this.add(speed);
+        
+        //Speed Control
+        speedControl = new JSlider(JSlider.HORIZONTAL, 0, 10, 2);
+        speedControl.setMajorTickSpacing(10);
+        speedControl.setMinorTickSpacing(1);
+        speedControl.setPaintTicks(true);
+        speedControl.setPaintLabels(true);
+        speedControl.addChangeListener(new ChangeListener(){
+            
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                JSlider source = (JSlider)e.getSource();
+                speedMovement = source.getValue();
+            }
+            
+        });
+        speedControl.setSize(400, 50);
+        speedControl.setLocation(70, 470);
+        this.add(speedControl);
         
         //Forward Button
         forward = new JButton("forward");

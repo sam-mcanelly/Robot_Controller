@@ -37,7 +37,7 @@ public class RobotEngine {
     public String getSite() { return site;};
     public int getPort() { return port; };
     
-    public void handshake(){
+    public boolean handshake(){
         site = site.replaceAll("http://", "");
         site = site.replaceAll("www.", "");
         
@@ -48,11 +48,13 @@ public class RobotEngine {
             out.flush();
             handShook = true;
             System.out.println("Successful Handshake!");
+            return true;
         } catch (java.net.UnknownHostException e){
             e.printStackTrace();
         } catch (java.io.IOException e) {
             e.printStackTrace();
         }
+        return false;
     }
     
     public void takeOff(){
