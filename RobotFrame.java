@@ -173,6 +173,7 @@ public class RobotFrame extends JFrame {
             public void stateChanged(ChangeEvent e) {
                 JSlider source = (JSlider)e.getSource();
                 speedMovement = source.getValue();
+                speedRotation = source.getValue() / 2;
             }
             
         });
