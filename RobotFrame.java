@@ -53,7 +53,7 @@ public class RobotFrame extends JFrame {
         //Setting dimensions and default stuff
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setTitle("Robot Controller");
-        this.setSize(500, 500);
+        this.setSize(500, 550);
         this.setResizable(false);
         this.setLayout(null);
         
